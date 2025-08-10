@@ -208,7 +208,7 @@ python example.py --arch "REDNet30" \  # REDNet10, REDNet20, REDNet30
 
 - **使用Unet网络分别添加 σ = 10、25、30、50的高斯噪声，测试集的平均PSNR,SSIM如下**
 
-![image-20250809175250781](README.assets\image-20250809175250781.png)
+![image-20250809175250781](README.assets/image-20250809175250781.png)
 
 由数据可以得出，Jittor框架下的图像去噪效果与Pytorch效果不相上下，甚至在一些情况下要明显好于Pytorch.
 

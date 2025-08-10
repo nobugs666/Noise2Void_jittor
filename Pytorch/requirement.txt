@@ -1,0 +1,10 @@
+numpy
+tqdm
+tensorboardX
+tensorboard
+tensorboard-logger==0.1.0
+matplotlib
+yacs
+wandb
+tqdm
+Pillow

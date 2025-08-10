@@ -309,15 +309,13 @@ PyTorch 显存使用峰值约 761MiB ，占用低且稳定。Jittor 显存使用
 <div align="center">
   <img src="README.assets/p_gpu使用率.png" alt="PyTorch GPU Utilization" width="70%"/>
   <p><i>PyTorch GPU 利用率</i></p>
+</div>
 
-
-  <div align="center">
+<div align="center">
   <img src="README.assets/j_gpu使用率.png" alt="PyTorch GPU Utilization" width="70%"/>
       <p><i>Jittor GPU 利用率</i></p>
-
+</div>
 PyTorch 曲线呈现间歇性的高 - 低波动，而jittor曲线是密集高频波动，整体维持高利用率。
-</div>
-</div>
    
 **总的来说，从训练时的loss、PSNR、SSIM来看，两者结果基本一致，与pytorch相比，jittorGPU利用率波动密集，占用显存更大，每轮训练时间不稳定，但平均更短效率更高。由此可得，jittor可以很好地复现本次任务的pytorch结果，甚至在一些方面更优。**
 

@@ -77,7 +77,6 @@ python3.7 -m jittor.test.test_example
 ```bash
 pip install -r requirements.txt
 ```
-
 ---
 
 ### 环境验证
@@ -200,7 +199,6 @@ python example.py --arch "REDNet30" \  # REDNet10, REDNet20, REDNet30
 2025-08-09 13:24:06,611 - INFO - Epoch 5/100, Loss: 0.284868, PSNR: 11.87, SSIM: 0.2449, Time: 2.89s
 ...
 ```
-
 ---
 
 ## 实验结果
@@ -211,7 +209,7 @@ python example.py --arch "REDNet30" \  # REDNet10, REDNet20, REDNet30
 
 由数据可以得出，Jittor框架下的图像去噪效果与Pytorch效果不相上下，甚至在一些情况下要明显好于Pytorch.
 
-其中一结果如图，每一列分别为原图像，加噪后的图像，jittor框架去噪图像，pytorch框架去噪图像
+其中一结果如下，每一列分别为原图像，加噪后的图像，jittor框架去噪图像，pytorch框架去噪图像
 
 
 

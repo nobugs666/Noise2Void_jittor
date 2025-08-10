@@ -155,7 +155,7 @@ python main.py --arch "N2V_Unet" \  # REDNet10, REDNet20, REDNet30
 - `{patch_size}`：指定patch大小；
 - `{batch_size}`：指定批次大小；
 - `{num_epochs}`：指定训练轮数；
-- `{lr}`：指定学习率；
+- `{lr}`：指定学习率；s
 - `{threads}`：指定线程数；
 
 
@@ -217,11 +217,11 @@ python example.py --arch "REDNet30" \  # REDNet10, REDNet20, REDNet30
 
 
 σ = 10                                                                                                                        **jittor**                                                **pytorch**
-![result](README.assets\result.jpeg)
- σ = 25![result (1)](README.assets\result (1).jpeg)σ = 30![result (2)](README.assets\result (2).jpeg)
+![result](README.assets/result.jpeg)
+ σ = 25![result (1)](README.assets/result (1).jpeg)σ = 30![result (2)](README.assets/result (2).jpeg)
 
 σ = 50
-![result (3)](README.assets\result (3).jpg)
+![result (3)](README.assets/result (3).jpg)
 
 ---
 

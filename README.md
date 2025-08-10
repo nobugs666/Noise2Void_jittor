@@ -216,12 +216,12 @@ python example.py --arch "REDNet30" \  # REDNet10, REDNet20, REDNet30
 
 
 
-σ = 10                                                                                                                        **jittor**                                                **pytorch**
+σ = 10                                                                                                                       
 ![result](README.assets/result.jpeg)
- σ = 25![result (1)](README.assets/result (1).jpeg)σ = 30![result (2)](README.assets/result (2).jpeg)
+ σ = 25![result(1)](README.assets/result(1).jpeg)σ = 30![result(2)](README.assets/result(2).jpeg)
 
 σ = 50
-![result (3)](README.assets/result (3).jpg)
+![result(3)](README.assets/result(3).jpg)
 
 ---
 

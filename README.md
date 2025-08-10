@@ -284,7 +284,7 @@ PSNR和SSIM两条曲线在两者的整体趋势高度相似，说明 Jittor 能�
 <div align="center">
   <img src="README.assets/p_时间.png" alt="PyTorch Step Time" width="80%"/>
   <p><i>jittor 单轮训练耗时</i></p>
-
+</div>
 两者前期都快速下降，但后期PyTorch 更稳定，但耗时更高（~4.8s/epoch）。jittor后期波动大，但平均耗时显著低于pytorch，**具有更高的效率**。这是因为其提前编译计算图，融合了底层算子。其动态的优化策略可能导致耗时的波动。
 
 ---
@@ -299,7 +299,7 @@ PSNR和SSIM两条曲线在两者的整体趋势高度相似，说明 Jittor 能�
 <div align="center">
   <img src="README.assets/j_显存使用大小.png" alt="PyTorch Memory Usage" width="80%"/>
   <p><i>jittor 显存使用</i></p>
-
+</div>
 PyTorch 显存使用峰值约 761MiB ，占用低且稳定。Jittor 显存使用峰值约 1783MiB ，**占用明显更高**。这可能因为jittor的计算图、算子实现等，这些数据占用了更多的显存换取了更高的训练效率。
 
 
@@ -317,7 +317,7 @@ PyTorch 显存使用峰值约 761MiB ，占用低且稳定。Jittor 显存使用
       <p><i>Jittor GPU 利用率</i></p>
 
 PyTorch 曲线呈现间歇性的高 - 低波动，而jittor曲线是密集高频波动，整体维持高利用率。
-
+</div>
 **总的来说，从训练时的loss、PSNR、SSIM来看，两者结果基本一致，与pytorch相比，jittorGPU利用率波动密集，占用显存更大，每轮训练时间不稳定，但平均更短效率更高。由此可得，jittor可以很好地复现本次任务的pytorch结果，甚至在一些方面更优**。
 
 

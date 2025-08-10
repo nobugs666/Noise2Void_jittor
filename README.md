@@ -1,6 +1,6 @@
 # Noise2Void_jittor
 
-![Project Status](https://img.shields.io/badge/status-completed-brightgreen) ![Python](https://img.shields.io/badge/python-3.8-blue) ![Jittor](https://img.shields.io/badge/jittor-1.3.10.0-red)![Pytorch](https://img.shields.io/badge/Pytorch-2.0.0-red) ![License](https://img.shields.io/badge/license-MIT-blue)
+![Project Status](https://img.shields.io/badge/status-completed-brightgreen) ![Python](https://img.shields.io/badge/python-3.8-blue) ![Jittor](https://img.shields.io/badge/jittor-1.3.10.0-red) ![Pytorch](https://img.shields.io/badge/Pytorch-2.0.0-red)  ![License](https://img.shields.io/badge/license-MIT-blue)
 
 
 ##  项目简介
@@ -251,18 +251,19 @@ python example.py --arch "REDNet30" \  # REDNet10, REDNet20, REDNet30
 <div align="center">
   <img src="README.assets/pytorch_loss.png" alt="PyTorch Loss Curve" width="70%"/>
   <p><i>PyTorch 训练 loss 曲线,</i></p>
-
+</div>
 
 <div align="center">
   <img src="README.assets/jittor_loss.png" alt="PyTorch Loss Curve" width="70%"/>
   <p><i>Jittor 训练 loss 曲线</i></p>
 </div>
+
 由图可得，两个曲线的走向**几乎一致**，前期都快速下降，后续趋于平稳，最终都达到0.15左右，故在当前实验设置（相同网络、数据、优化策略等 ）下，PyTorch 和 Jittor 训练时模型均有效学习，**表明 Jittor 可在该场景中较好复现 PyTorch 的训练效果**，初步验证其对 PyTorch 框架训练表现的适配性。
 
 <div align="center">
   <img src="README.assets\pytorch_psnr.png" alt="PyTorch Loss Curve" width="80%"/>
   <p><i>PyTorch验证集PSNR,SSIM曲线</i></p>
-
+</div>
 <div align="center">
   <img src="README.assets\jittor_psnr.png" alt="PyTorch Loss Curve" width="80%"/>
   <p><i>Jittor验证集PSNR,SSIM曲线</i></p>
@@ -277,13 +278,12 @@ PSNR和SSIM两条曲线在两者的整体趋势高度相似，说明 Jittor 能�
 <div align="center">
   <img src="README.assets/j_时间.png" alt="PyTorch Step Time" width="80%"/>
   <p><i>PyTorch 单轮训练耗时</i></p>
-
-
-
+</div>
 <div align="center">
   <img src="README.assets/p_时间.png" alt="PyTorch Step Time" width="80%"/>
   <p><i>jittor 单轮训练耗时</i></p>
 </div>
+
 两者前期都快速下降，但后期PyTorch 更稳定，但耗时更高（~4.8s/epoch）。jittor后期波动大，但平均耗时显著低于pytorch，**具有更高的效率**。这是因为其提前编译计算图，融合了底层算子。其动态的优化策略可能导致耗时的波动。
 
 ---
@@ -293,12 +293,13 @@ PSNR和SSIM两条曲线在两者的整体趋势高度相似，说明 Jittor 能�
 <div align="center">
   <img src="README.assets/p_显存使用大小.png" alt="PyTorch Memory Usage" width="80%"/>
   <p><i>PyTorch 显存使用</i></p>
-
+</div>
 
 <div align="center">
   <img src="README.assets/j_显存使用大小.png" alt="PyTorch Memory Usage" width="80%"/>
   <p><i>jittor 显存使用</i></p>
 </div>
+
 PyTorch 显存使用峰值约 761MiB ，占用低且稳定。Jittor 显存使用峰值约 1783MiB ，**占用明显更高**。这可能因为jittor的计算图、算子实现等，这些数据占用了更多的显存换取了更高的训练效率。
 
 
@@ -322,11 +323,8 @@ PyTorch 曲线呈现间歇性的高 - 低波动，而jittor曲线是密集高频
 
 ---
  ## 总结
-<div align="left">
- 
-以下我将列出我在该项目中总结的问题和经验，供各位参考。
+以下我将列出我在该项目中总结的问题和经验，供大家参考。
 1. 首先是环境的搭建，刚开始我通过Docker安装jittor，但训练时我发现我笔记本电脑的显卡性能过低，便在Autodl算力云上租RTX4090进行训练。在租用示例时我发现他提供jittor的基础镜像，但是仅提供1.3.1版本的jittor和3.8版本的python。创建成功后，运行jittor框架报错，原因是Jittor检测到的CUDA设备架构为sm_120（可能是误识别或虚拟环境问题），但CUDA 11.3不支持该架构，所以需要升级cuda,即jittor框架与cuda版本不匹配问题。最简单的解决方法是不直接使用jittor的虚拟镜像，使用其他镜像之后再安装上jittor即可运行jittor框架。
 2. 接下来说一下jittor和pytorch代码的几点区别，pytorch的网络实在nn.Module的基础上搭建的，而jittor是在`jt.Module`搭建的。pytorch的网络类中实现了`forward()`而jittor则用`execute()`来代替，同时jittor没有`backward()`函数，而是融合到了step函数中。jittor使用统一的内存管理，即统一GPU和CPU内存,耗尽GPU后会用CPU来弥补，故不需要代码中加入`to(device)`的声明，直接再开头加上`jt.flags.use_cuda =  0，1`来设置是运行在GPU模式还是CPU模式。在torch中，`view()`等几个函数并不生成新的数据，只是改变了数据的索引方式，因此其存储是不连续的，有时候需要用`contiguous()`函数使数据变得一致，但jittor中并没有这个函数。
 3. 官方提供了一个简单的Pytorch模型代码转Jittor模型的[脚本](https://cg.cs.tsinghua.edu.cn/jittor/pt_converter/)，但必须是class+module声明的类才能转换，对于其他部分都需要自己转换，需要注意pytorch中具有的函数在jittor中大多具有同名函数，直接将torch改为jittor就能用，但是有些函数即使函数名称和功能都一样但是设置的参数不同，需要注意，其他jittor中没有相同名称函数则需要在[官方使用文档](https://cg.cs.tsinghua.edu.cn/jittor/assets/docs/index.html)中查找，都有对应作用的函数。
 本次项目是我第一次深入了解并使用jittor框架，故迁移过程中遇到了许多环境或技术上的问题，但最终都能一一解决，收获颇丰。但我仍对jittor框架的理解不够透彻，今后会做更多的深入探究。总的来说，从项目最终的结果来看，pytorch的运行结果都能在jittor框架下成功复现，且某些方面jittor更优。目前pytorch拥有庞大且活跃的社区，在学术界占据主导地位，但随着jittor的不断发展和推广，相信他的应用场景也将不断扩展。
-</div>

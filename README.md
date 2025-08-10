@@ -1,5 +1,4 @@
 # Noise2Void_jittor
-**[English](./README_EN.md) | 简体中文**
 
 ![Project Status](https://img.shields.io/badge/status-completed-brightgreen) ![Python](https://img.shields.io/badge/python-3.8-blue) ![Jittor](https://img.shields.io/badge/jittor-1.3.10.0-red)![Pytorch](https://img.shields.io/badge/Pytorch-2.0.0-red) ![License](https://img.shields.io/badge/license-MIT-blue)
 

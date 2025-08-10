@@ -219,11 +219,11 @@ python example.py --arch "REDNet30" \  # REDNet10, REDNet20, REDNet30
 σ = 10                                                                                                                       
 ![result](README.assets/result.jpeg)
 σ = 25
-![result(1)](README.assets/result(1).jpeg)
+![result_1](README.assets/result_1.jpeg)
 σ = 30
-![result(2)](README.assets/result(2).jpeg)
+![result_2](README.assets/result_2.jpeg)
 σ = 50
-![result(3)](README.assets/result(3).jpeg)
+![result_3](README.assets/result_3.jpeg)
 
 ---
 

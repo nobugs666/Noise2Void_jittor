@@ -34,7 +34,7 @@
 | `cut.py` | `cut.py` | 切割验证集 |
 | `requirements.txt`                | `requirements.txt`                  | 依赖库列表 |
 | `dataset/`                       | `dataset/`                         | 去噪后图像结果保存位置 |
-| `weights/`      | `functions/`                        | 训练模型保存位置 |
+| `weights/`      | `weights/`                        | 训练模型保存位置 |
 | `worklog/`        | `worklog/`          | 训练日志记录 |
 | `Plt/` | `Plt/` | 训练过程指标曲线可视化位置 |
 

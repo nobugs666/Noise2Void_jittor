@@ -24,7 +24,7 @@
 | PyTorch 版本（`Pytorch/`）      | Jittor 版本（`jittor/`）        | 说明 |
 |------------------------------------|--------------------------------------|------|
 | `main.py`                          | `main.py`                            | 主程序入口，网络训练与验证 |
-| `example.py` | `draw_evaluation.py` | 绘制指标曲线 |
+| `draw_evaluation.py` | `draw_evaluation.py` | 绘制指标曲线 |
 | `dataset.py` | `dataset.py` | 封装数据集 |
 | `model.py` | `model.py` | 模型实现（Unet） |
 | `utils.py` | `utils.py` | 工具类 |

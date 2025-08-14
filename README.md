@@ -91,7 +91,7 @@ python -c "import jittor as jt; jt.test()"
 
 - 训练集：使用[BSD500](https://github.com/BIDS/BSDS500)数据集，取其中的400张训练，放在文件夹dataset/BSD400
 - 验证集：使用[BSD68](https://gitcode.com/Universal-Tool/51971/?utm_source=article_gitcode_universal&index=top&type=card&&isLogin=1)数据集，取其中的34张用于验证，放在文件夹dataset/BSD68_valid
-- 测试集：使用[BSD68](https://gitcode.com/Universal-Tool/51971/?utm_source=article_gitcode_universal&index=top&type=card&&isLogin=1)数据集，取另外的34张用于测试，放在文件夹dataset/BSD400_test
+- 测试集：使用[BSD68](https://gitcode.com/Universal-Tool/51971/?utm_source=article_gitcode_universal&index=top&type=card&&isLogin=1)数据集，取另外的34张用于测试，放在文件夹dataset/BSD68_test
 
 运行`to_gray.py`,将BSD400变为灰度图像。
 运行`cut68.py`,调整下载好的BSD68数据集并得到项目所用的验证集和训练集。
